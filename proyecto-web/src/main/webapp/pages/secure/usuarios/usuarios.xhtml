@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+
+            <p:outputLabel for="nacionalidad"  value="Nacionalidad" styleClass="oscuro" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+
+            <p:selectOneRadio  id="nacionalidad"
+                               value="#{usuarioDM.entidad.nacionalidad}" >
+                <f:selectItem itemLabel="Nacional" itemValue="NACIONAL" />
+                <f:selectItem itemLabel="Extranjero" itemValue="EXTRANJERO" />
+                <p:ajax/>
+            </p:selectOneRadio>
+        </div>
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="identificacion" value="Identificación" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="identificacion" required="true" maxlength="30"
+                         requiredMessage="El campo identificación es obligatorio"
+                         value="#{usuarioDM.entidad.identificacion}">
+                <p:ajax event="change"  update=":form:panelPrincipal"
+                        listener="#{usuarioController.validarRecuperarDatosIdentificacion()}"
+                        ></p:ajax>
+            </p:inputText>   
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="nombres" value="Nombres" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="nombres" required="true" maxlength="50" 
+                         style="text-transform: uppercase;" converter="UpperCaseConverter" 
+                         requiredMessage="El campo nombres es obligatorio"
+                         value="#{usuarioDM.entidad.nombres}"  >
+                <p:ajax/>
+            </p:inputText> 
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="apellidos" value="Apellidos" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="apellidos" required="true"  maxlength="30" 
+                         style="text-transform: uppercase;" converter="UpperCaseConverter" 
+                         requiredMessage="El campo apellidos es obligatorio"
+                         value="#{usuarioDM.entidad.apellidos}">
+                <p:ajax/>
+            </p:inputText>
+
+
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="correo" value="Correo" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+            <p:inputText id="correo" required="true"  maxlength="50"
+                         placeholder="correo@correo.com"
+                         validatorMessage="Correo invalido"
+                         requiredMessage="El campo usuario es obligatorio"
+                         value="#{usuarioDM.entidad.correo}">
+                <p:ajax/>
+            </p:inputText>  
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="usuario" value="Usuario" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+            <p:inputText id="usuario" required="true"  maxlength="50"
+                         requiredMessage="El campo usuario es obligatorio"
+                         value="#{usuarioDM.usuario.nombre}">
+                <p:ajax/>
+            </p:inputText>  
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="perfil" value="Perfil" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+            <p:selectOneMenu id="perfil" required="true" 
+                             filter="true" filterMatchMode="contains"
+                             requiredMessage="El campo perfil es obligatorio"
+
+                             value="#{usuarioDM.idPerfil}">
+                <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                <f:selectItems value="#{selectItemsController.itemsListaPerfiles}" />
+                <p:ajax event="change" update=":form:mensajesUsuario,:form:perfil" process="@this,:form:perfil" listener="#{usuarioController.seleccionarPerfil()}"/>
+            </p:selectOneMenu>
+
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="aprobador" value="Aprobador" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+            <p:selectOneMenu id="aprobador" required="true" 
+                             filter="true" filterMatchMode="contains"
+                             requiredMessage="El campo aprobador es obligatorio"
+
+                             value="#{usuarioDM.idUsuarioAprobador}">
+                <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                <f:selectItems value="#{selectItemsController.itemsListaUsuarios}" />
+                <p:ajax event="change"/>
+            </p:selectOneMenu>
+
+        </div>
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="pais" value="Pais" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneMenu id="pais" 
+                             value="#{usuarioDM.entidad.pais}" 
+                             filter="true" 
+                             filterMatchMode="contains" 
+                             style="width: 100%;" 
+                             >
+                <f:selectItems value="#{usuarioDM.listaPaises}" 
+                               var="paises" 
+                               itemLabel="#{paises.nombre}"/>
+
+            </p:selectOneMenu>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="costoHora" value="Costo hora" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+            <p:inputNumber id="costoHora" required="true"  maxlength="5"
+                           minValue="0" 
+                           requiredMessage="El campo costo hora es obligatorio"
+                           value="#{usuarioDM.usuario.costoHora}">
+                <p:ajax/>
+            </p:inputNumber>  
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel for="estado" value="Estado" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+
+            <p:selectOneRadio  id="estado" 
+                               value="#{usuarioDM.usuario.estado}" >
+                <f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+                <f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+                <p:ajax/>
+
+            </p:selectOneRadio>
+        </div>
+
+    </div>
+    <br />
+
+
+    <p:commandButton   styleClass="btn-success"
+                       value="Guardar" 
+                       process="@this,:form:panelPrincipal"
+                       update=":form:panelPrincipal"
+                       action="#{usuarioController.guardarUsuario()}"  />
+    <p:commandButton  value="Cancelar" styleClass="btn-warning"
+                      process="@this"
+                      update=":form:panelPrincipal" action="#{usuarioController.cancelar()}">
+        <p:resetInput target=":form:panelPrincipal" />
+    </p:commandButton>
+
+
+
+</html>

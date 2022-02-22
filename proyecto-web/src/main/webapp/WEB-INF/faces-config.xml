@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <application>
+        <locale-config>
+        </locale-config>
+        <resource-bundle>
+            <base-name>MessageResources</base-name>
+            <var>messages</var>
+        </resource-bundle>
+    </application>
+    
+    <application>
+        <locale-config>
+            <default-locale>es_US</default-locale>
+            <supported-locale>es_US</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>com.properties.Menu</base-name>
+            <var>menu</var> 
+        </resource-bundle>
+        
+    </application>
+    
+    <converter>
+        <converter-id>UpperCaseConverter</converter-id>
+        <converter-class>com.proyecto.web.util.UpperCaseConverter
+        </converter-class>
+    </converter>
+  
+    <converter>
+        <converter-id>empleado</converter-id>
+        <converter-class>com.proyecto.web.util.EmpleadoConverter
+        </converter-class>
+    </converter>
+  
+</faces-config>

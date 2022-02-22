@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <style type="text/css">
+        #layout-menu_menu {
+            z-index: 9997!important;
+        }
+        #layout-menu_menu span.ui-menuitem-text {
+            margin-left: 2px;
+        }
+
+    </style>
+    <ul class="nav navbar-nav">
+
+
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <h:graphicImage  url ="#{resource['images/usuario.png']}"
+                                 style="width:25px;height:25px;margin-bottom:-8px;margin-top:-8px;margin-right: 10px " 
+                                 />
+                <span class="hidden-xs">#{menuDM.usuario.nombre}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="user-header">
+                    <h:panelGrid columns="2" width="100%" >
+
+
+                        <h:outputText  styleClass="oscuro"  style="float: left"
+                                       value="Identificación: " />
+                        <h:outputText  style="float: left"
+                            value="#{menuDM.usuario.persona.identificacion}" />
+
+                        <h:outputText  styleClass="oscuro" style="float: left"
+                                       value="Nombres: "/>
+                        <h:outputText  style="float: left"
+                            value="#{menuDM.usuario.persona.nombres}" />
+
+                        <h:outputText  styleClass="oscuro" style="float: left"
+                                       value="Apellidos: "/>
+                        <h:outputText  style="float: left"
+                            value="#{menuDM.usuario.persona.apellidos}" />
+                    </h:panelGrid>
+
+                </li>
+                <li class="user-footer">
+                    <h:form prependId="false">
+                        <div class="pull-left">
+
+                            <p:commandButton styleClass="btn btn-danger" value="Cambiar clave"  onclick="PF('dialogCambiarClave').show();"/>
+                        </div>
+                        <div class="pull-right">
+                            <p:commandLink id="logout" action="#{cabeceraController.salir()}" title="Salir">
+                                <i class="fa fa-sign-out fa-2x"></i>
+                            </p:commandLink>
+                        </div>
+
+
+                    </h:form>
+
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+</ui:composition>

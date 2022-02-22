@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="ui-g ui-fluid">
+
+        <!--Una Fila-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFechaCons" value="Fecha:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:calendar id="txtFechaCons" locale="es" 
+                        navigator="true" 
+                        required="true"
+                        pattern="yyyy-MM-dd" yearRange="c-100:c+100"
+                        value="#{historiaDM.constanteFisiologica.fecha}"
+                        >
+                <p:ajax event="dateSelect" />
+            </p:calendar>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <!--Una Fila-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtTemperatura" value="Temperatura:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputNumber id="txtTemperatura"
+                           value="#{historiaDM.constanteFisiologica.temperatura}"
+                           >
+
+            </p:inputNumber>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFres" value="F.Respiratoria:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputNumber id="txtFres"
+                           value="#{historiaDM.constanteFisiologica.frecuenciaRespiratoria}"
+                           >
+
+            </p:inputNumber>
+        </div>
+
+
+        <!--Una Fila-->
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFcar" value="F.Respiratoria:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputNumber id="txtFcar"
+                           value="#{historiaDM.constanteFisiologica.frecuenciaCardiaca}"
+                           >
+
+            </p:inputNumber>
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtCapilar" value="R.Capilar:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtCapilar"
+                         value="#{historiaDM.constanteFisiologica.ruidoCapilar}"
+                         >
+
+            </p:inputText>
+        </div>
+        <!--Una Fila-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtMucosa" value="Mucosa:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtMucosa"
+                         value="#{historiaDM.constanteFisiologica.mucosa}"
+                         >
+
+            </p:inputText>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtGanglios" value="Ganglios:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtGanglios"
+                         value="#{historiaDM.constanteFisiologica.ganglios}"
+                         >
+
+            </p:inputText>
+        </div>       
+        <!--Una Fila-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+
+    </div>
+    <br />
+
+
+</html>

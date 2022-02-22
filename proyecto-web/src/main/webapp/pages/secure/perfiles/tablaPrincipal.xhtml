@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <p:dataTable id="listaPerfiles" value="#{perfilDM.perfilList}" reflow="true"
+                 var="perfil" rowKey="#{perfil.id}" paginator="true" rows="10"
+                 paginatorPosition="bottom" 
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15" emptyMessage="Tabla vacia">
+        <f:facet name="header">
+            <p:commandButton  value="Nuevo"
+                              process="@this"
+                              update=":form:panelPrincipal" styleClass="btn-primary" 
+                              action="#{perfilController.nuevo()}"  />
+
+
+        </f:facet>
+        <p:column headerText="Nombre" sortBy="#{perfil.nombre}"
+                  filterBy="#{perfil.nombre}" filterMatchMode="contains">
+            <h:outputText value="#{perfil.nombre}" />
+        </p:column>
+
+        <p:column headerText="Descripción"
+                  sortBy="#{perfil.descripcion}"
+                  filterBy="#{perfil.descripcion}"
+                  filterMatchMode="contains">
+            <h:outputText value="#{perfil.descripcion}" />
+        </p:column>
+
+        <p:column headerText="Estado"
+                  sortBy="#{perfil.estado}"
+                  filterBy="#{perfil.estado}"
+                  filterMatchMode="contains">
+            <h:outputText value="#{perfil.estado}" />
+        </p:column>
+
+
+        <p:column headerText="Acción" width="15%">
+
+            <p:menuButton value="Opciones" styleClass="btn-info">
+
+                <p:menuitem value="Editar" process="@this"
+                            rendered="#{cabeceraController.habilitarOperaciones('ACTUALIZACION')}"
+                            update=":form:panelPrincipal" styleClass="btn-primary"
+                            action="#{perfilController.seleccionarEdicion(perfil)}" />
+                    <p:menuitem value="Eliminar" process="@this" 
+                            rendered="#{cabeceraController.habilitarOperaciones('ELIMINACION')}"
+                            update=":form:panelPrincipal" styleClass="btn-danger"
+                            action="#{perfilController.seleccionarPerfil(perfil)}" 
+                            onclick="PF('confirmDialogEliminar').show();"/>
+            </p:menuButton>
+
+
+
+
+        </p:column>
+    </p:dataTable>
+</html>

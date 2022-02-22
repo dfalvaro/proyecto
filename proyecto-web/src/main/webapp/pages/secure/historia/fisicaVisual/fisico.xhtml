@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFechaFisico" value="Fecha:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:calendar id="txtFechaFisico" locale="es" 
+                        navigator="true" 
+                        required="true"
+                        pattern="yyyy-MM-dd" yearRange="c-100:c+100"
+                        value="#{historiaDM.fisicaVisual.fecha}"
+                        >
+                <p:ajax event="dateSelect" />
+            </p:calendar>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtOidos" value="Oidos:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtOidos"
+                         value="#{historiaDM.fisicaVisual.oidos}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtOjos" value="Ojos:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtOjos"
+                         value="#{historiaDM.fisicaVisual.ojos}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtTrufa" value="Trufa:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtTrufa"
+                         value="#{historiaDM.fisicaVisual.trufa}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtBoca" value="Boca/Dentadura:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtBoca"
+                         value="#{historiaDM.fisicaVisual.bocaDentadura}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtPiel" value="Piel/Pelaje:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtPiel"
+                         value="#{historiaDM.fisicaVisual.pielPelaje}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtCranea" value="R.Craneal:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtCranea"
+                         value="#{historiaDM.fisicaVisual.regionCraneal}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtVentral" value="R.Ventral:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtVentral"
+                         value="#{historiaDM.fisicaVisual.regionVentral}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtDorasl" value="R.Dorsal:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtDorasl"
+                         value="#{historiaDM.fisicaVisual.regionDorsal}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtCaudal" value="R.Caudal:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtCaudal"
+                         value="#{historiaDM.fisicaVisual.regionCaudal}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtAnteriores" value="M.Anteriores:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtAnteriores"
+                         value="#{historiaDM.fisicaVisual.miembrosAnteriores}"
+                         >
+
+            </p:inputText>
+        </div>   
+        
+         <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtSuperiores" value="M.Posteriores:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtSuperiores"
+                         value="#{historiaDM.fisicaVisual.miembrosPosteriores}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        
+
+
+
+    </div>
+    <br />
+
+
+</html>

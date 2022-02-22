@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <p:dataTable id="listaMenu" value="#{perfilDM.listaFuncionalidades}" selection="#{perfilDM.listaFuncionalidadesSeleccionaldas}" style="width:300px"
+                 var="funcionalidad" rowKey="#{funcionalidad.id}" paginator="true" rows="5"
+                 paginatorPosition="bottom" 
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5" emptyMessage="Tabla vacia">
+        <p:column headerText="Funcionalidad">
+            <h:outputText value="#{funcionalidad.nombre}" />
+        </p:column>
+        <p:column selectionMode="multiple" style="width:60px;text-align:center" />
+
+    </p:dataTable>
+    <br/>
+    <p:commandButton  value="Aceptar" styleClass="btn-success"
+                      process="@this,:form:listaFuncionalidades,:form:listaMenu"
+                      update=":form:listaFuncionalidades,:form:listaMenu" 
+                      action="#{perfilController.seleccionarFuncionalidades()}"
+                      onclick="PF('dialogListaMenu').hide();"
+                      >
+    </p:commandButton>
+
+    <p:commandButton  value="Cancelar"  styleClass="btn-warning"
+                      onclick="PF('dialogListaMenu').hide();" 
+                      type="button" >
+    </p:commandButton>
+</html>

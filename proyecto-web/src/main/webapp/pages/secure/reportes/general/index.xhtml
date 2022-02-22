@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <ui:composition template="/WEB-INF/templates/template.xhtml">
+        <f:metadata>
+            <f:viewAction action="#{canController.initForm()}" />
+        </f:metadata>
+        <ui:define name="metadata">
+
+            <style type="text/css">
+                .ui-datatable .ui-datatable-header {
+                    text-align: right !important;
+                }
+            </style>
+        </ui:define>
+
+        <ui:define name="description">
+            <h:outputText value="UBICACIÓN: #{menuDM.nombreFuncionalidad}" styleClass="oscuro" />
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="form"  onkeypress="return event.keyCode !== 13">
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <!-- Can -->
+                        <!--                        <p:panel id="panelPrincipal"  style="border: none;">
+                                                    <p:commandLink  ajax="false" process="@this"  update="dlgPdf" 
+                                                                    actionListener="{canController.generarReporteClientes()}">                
+                                                        <h:graphicImage style="width:8vw;"  
+                                                                        value="Descargar en pdf" title="Descargar en pdf" />
+                                                    </p:commandLink>
+                                                </p:panel>-->
+
+                        <p:commandButton value="listas gias"
+                                         action="#{canController.listarGuias()}"
+                                         process="@this"
+                                         immediate="true"
+                                         >
+
+                        </p:commandButton>
+
+                    </div>
+                </div>
+                <!--
+                                <p:outputPanel id="dialogos">
+                                    <ui:include src="dlgPdf.xhtml"/>
+                                </p:outputPanel>-->
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

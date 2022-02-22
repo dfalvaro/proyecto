@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+
+
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <div class="login-box">
+
+
+
+
+                <h:form id="form" style="width:100%">
+
+
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <p:graphicImage name="/images/cargando.gif" />
+                    </p:dialog>
+
+                    <p:panel id="container" header="Recuperar contraseña">
+                        <p:growl id="growl"   life="3000" />
+
+                        <div class="form-group has-feedback">
+
+
+                            <p:inputText id="correo"   styleClass="form-control" placeholder="Correo" value="#{cabeceraDM.correoRecuperacion}" required="true" label="correo" />
+
+                            <i class="fa fa-envelope form-control-feedback" ></i>
+                        </div>
+
+
+                        <p:panelGrid columns="2"  layout="grid"  styleClass="ui-noborder"   >
+                            <p:commandButton value="Recuperar" update="growl,container" process="@this,container" 
+                                             style="width: 100%"
+                                             actionListener="#{cabeceraController.recuperarDatosUsuario()}"/>
+
+                            <p:commandButton value="Login"  
+                                             style="width: 100%" process="@this"
+                                             actionListener="#{cabeceraController.redireccionLogin()}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

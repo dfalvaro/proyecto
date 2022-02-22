@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/templates/template.xhtml">
+         <f:metadata>
+            <f:viewAction action="#{perfilController.initForm()}" />
+        </f:metadata>
+     <ui:define name="metadata">
+   
+            <style type="text/css">
+                .ui-datatable .ui-datatable-header {
+                    text-align: right !important;
+                }
+            </style>
+        </ui:define>
+
+        <ui:define name="description">
+            <h:outputText value="UBICACIÓN: #{menuDM.nombreFuncionalidad}" styleClass="oscuro" />
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="form"  onkeypress="return event.keyCode !== 13">
+
+                <p:panel id="panelPrincipal" style="border: none;" >
+
+                    <p:growl id="mensajesPerfiles"   />
+
+                    <p:panel id="panelTabla"  header="Administración de perfiles" visible="#{perfilDM.showPanelTablaPerfil}" >
+                        <ui:include src="../perfiles/tablaPrincipal.xhtml" />
+                    </p:panel>
+                    <p:panel  id="panelCrudPerfil" header="Administración de perfiles" visible="#{perfilDM.showPanelCrudPerfil}">
+                        <p:outputLabel  value="Campos obligatorios en el formulario*"  style="color: #D20005" />
+
+                        <ui:include src="../perfiles/perfiles.xhtml" />
+                         <p:commandButton  
+        value="Guardar" process="@this,:form:panelPrincipal"
+        update=":form:panelPrincipal" styleClass="btn-success"
+        action="#{perfilController.guardar()}"  />
+    <p:commandButton  
+        process="@this"  value="Cancelar" styleClass="btn-warning"
+        update=":form:panelPrincipal" action="#{perfilController.cancelar()}">
+        <p:resetInput target=":form:panelPrincipal" />
+    </p:commandButton>
+
+                    </p:panel>
+
+                    <p:dialog id="dialogListaMenu" header="Lista funcionalidades"
+                              closable="flase" 
+                              widgetVar="dialogListaMenu" modal="false" resizable="false"
+                              showEffect="clip" hideEffect="fold">
+                        <ui:include src="../perfiles/tablaFuncionalidades.xhtml" /> 
+                    </p:dialog>
+
+                </p:panel>
+
+
+
+
+
+                <p:dialog id="confirmDialogEliminar"  header="Confirmación" modal="false" resizable="false" 
+                          widgetVar="confirmDialogEliminar">
+                    <h:outputText value="¿Está seguro de eliminar el registro?" />
+                    <f:facet name="footer">
+                        <h:panelGrid id="confirmarDialogDetalle" columns="2">
+                            <p:commandButton id="confirm" value="Si" process="@this"
+                                             update=":form:panelPrincipal"
+                                             action="#{perfilController.eliminar()}"
+                                             onclick="PF('confirmDialogEliminar').hide();"
+                                             />
+                            <p:commandButton id="decline" value="No "
+                                             process="@this"
+                                             update=":form:panelPrincipal"
+                                             onclick="PF('confirmDialogEliminar').hide();" 
+                                             />
+                        </h:panelGrid>
+                    </f:facet>
+                </p:dialog>
+
+                </h:form>
+            
+        </ui:define>
+    </ui:composition>
+</html>

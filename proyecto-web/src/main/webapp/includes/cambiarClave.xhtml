@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+    <p:dialog id="dialogCambiarClave" header="Cambiar clave" widgetVar="dialogCambiarClave" 
+              styleClass="box-danger box-solid"
+              resizable="false"  modal="false" 
+              closable="false"  >
+        <h:form  style="border: none;">
+            <p:growl id="growl"   life="3000" />
+
+            <h:panelGrid id="container" columns="1"    >
+
+                <p:panelGrid columns="2"  layout="grid"  styleClass="ui-noborder" style="width: 40%" >
+                    <span class="ui-inputgroup-addon"><i class="fa fa-unlock-alt"></i></span>
+                    <p:password id="clave" value="#{cabeceraDM.claveUsuario}"  label="usuario" maxlength="20"
+                                feedback="true" required="true"
+                                placeholder="contraseña"
+                                requiredMessage="El campo clave es obligatorio"
+                                promptLabel="Ingrese clave segura."
+                                weakLabel="Insegura" goodLabel="Segura" strongLabel="Fuerte"/>
+                </p:panelGrid>
+
+
+
+
+
+                <p:panelGrid columns="2"  layout="grid"  styleClass="ui-noborder"  style="width: 40%" >
+                    <span class="ui-inputgroup-addon"><i class="fa fa-thumbs-up"></i></span>
+                    <p:password id="verificacion" value="#{cabeceraDM.verificacionClaveUsuario}"  label="usuario" maxlength="20"
+                                 required="true"
+                                 placeholder="verificacion"
+                                 requiredMessage="El campo verificación es obligatorio"
+                                 />
+                </p:panelGrid>
+
+
+
+                <f:facet name="footer">
+                    <h:panelGrid columns="2" width="100%">
+                        <p:commandButton value="cambiar" update="growl,container,dialogCambiarClave" process="@this,container" 
+                                         style="width: 100%"
+                                         onclick="PF('dialogCambiarClave').hide();"
+                                         actionListener="#{cabeceraController.actualizarClaveUsuario()}"/>
+                        <p:commandButton value="Cancelar"  update="dialogCambiarClave"
+                                         onclick="PF('dialogCambiarClave').hide();" 
+                                         style="width: 100%" process="@this"
+                                         />
+                    </h:panelGrid>
+
+                </f:facet>  
+            </h:panelGrid>
+        </h:form>
+    </p:dialog>
+</ui:composition>

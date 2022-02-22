@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!--  TABLA DE DATOS -->
+
+
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel  for="nombre" value="Nombre" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText  id="nombre" required="true" maxlength="30"
+                          style="text-transform: uppercase;" converter="UpperCaseConverter" 
+                          requiredMessage="El campo nombre es obligatorio"
+                          value="#{perfilDM.perfil.nombre}">
+            </p:inputText> 
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel  for="descripcion" value="Descripción" styleClass="oscuro"></p:outputLabel>
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputTextarea  id="descripcion" required="true" maxlength="100"
+                              style="text-transform: uppercase;" converter="UpperCaseConverter" 
+                              requiredMessage="El campo descripción es obligatorio"
+                              value="#{perfilDM.perfil.descripcion}">
+            </p:inputTextarea>  
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel value="Estado" styleClass="oscuro" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneRadio  
+                value="#{perfilDM.perfil.estado}" >
+                <f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+                <f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+            </p:selectOneRadio> 
+        </div>
+
+       
+
+
+
+    </div>
+
+
+    <p:dataTable id="listaFuncionalidades" value="#{perfilDM.listaMenuPerfilCreacion}" 
+                 var="fun" rowKey="#{fun.id}"  scrollable="true" 
+                 reflow="true"
+                 emptyMessage="Tabla vacia">
+        <f:facet name="header">
+            <p:commandButton value="Agregar" process="@this,:form:listaMenu"
+                             action="#{perfilController.listaMenu()}"
+                             update=":form:listaMenu"  styleClass="btn-primary" 
+                             onclick="PF('dialogListaMenu').show();" 
+                             />
+
+        </f:facet>
+
+        <p:column headerText="Funcionalidad" width="40%">
+            <p:outputLabel value="#{fun.menu.nombre}" />
+        </p:column>
+
+        <p:column headerText="Operaciones" width="50%">
+ 
+        </p:column>
+
+
+        <p:column headerText="Acción" width="10%">
+
+            <p:commandButton value="Quitar" process="@this,:form:listaFuncionalidades" styleClass="btn-danger"
+                             update=",:form:listaFuncionalidades" actionListener="#{perfilController.eliminarFuncionalidaes(fun)}"/>
+        </p:column>
+
+    </p:dataTable>
+    <br />
+
+
+   
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+
+
+    <p:dataTable id="listaUsuarios" value="#{usuarioDM.listaUsuarios}" reflow="true"
+                 var="usuario" rowKey="#{usuario.id}" paginator="true" rows="10"
+                 paginatorPosition="bottom" 
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15" emptyMessage="Tabla vacia">
+        <f:facet name="header" >
+
+            <p:panelGrid columns="2"  layout="grid"  styleClass="ui-noborder" >
+                <p:outputLabel value="Administración de usuarios" styleClass="oscuro" />
+                <p:commandButton value="Nuevo" 
+                                 process="@this" icon="glyphicon glyphicon-lock" styleClass="btn-primary"  
+                                 update=":form:panelPrincipal"
+                                 action="#{usuarioController.nuevo()}"  />
+            </p:panelGrid>
+
+
+
+        </f:facet>
+
+
+        <p:column  headerText="Identificación" sortBy="#{usuario.persona.identificacion}"
+                   filterBy="#{usuario.persona.identificacion}" filterMatchMode="contains">
+            <h:outputText value="#{usuario.persona.identificacion}" />
+        </p:column>
+
+        <p:column  headerText="Nombres" sortBy="#{usuario.persona.nombres} #{usuario.persona.apellidos}"
+                   filterBy="#{usuario.persona.nombres} #{usuario.persona.apellidos}" filterMatchMode="contains">
+            <h:outputText value="#{usuario.persona.nombres} #{usuario.persona.apellidos}" />
+        </p:column>
+
+        <p:column  headerText="Usuario" sortBy="#{usuario.nombre}"
+                   filterBy="#{usuario.nombre}" filterMatchMode="contains">
+            <h:outputText value="#{usuario.nombre}" />
+        </p:column>
+
+
+        <p:column  headerText="Correo" sortBy="#{usuario.persona.correo}"
+                   filterBy="#{usuario.persona.correo}" filterMatchMode="contains">
+            <h:outputText value="#{usuario.persona.correo}" />
+        </p:column>
+
+
+
+        <p:column  headerText="Perfil"
+                   sortBy="#{usuario.perfil.nombre}"
+                   filterBy="#{usuario.perfil.nombre}"
+                   filterMatchMode="contains">
+            <h:outputText value="#{usuario.perfil.nombre}" />
+        </p:column>
+
+        <p:column  headerText="Estado"
+                   sortBy="#{usuario.estado}"
+                   filterBy="#{usuario.estado}"
+                   filterMatchMode="contains">
+            <h:outputText value="#{usuario.estado}" />
+        </p:column>
+
+
+        <p:column headerText="Acción" width="14%">
+
+
+            <p:menuButton value="Opciones" styleClass="btn-info">
+
+                <p:menuitem value="Editar" process="@this"
+                            update=":form:panelPrincipal" 
+                            styleClass="btn-primary"
+                            icon="fa fa-pencil"
+                            action="#{usuarioController.seleccionarEdicion(usuario)}" />
+
+                <p:menuitem value="Reenvio correo" process="@this" 
+                            styleClass="btn-primary"
+                            update=":form:panelPrincipal"
+                            action="#{usuarioController.reenvioCorreo(usuario)}" />
+
+
+                <p:menuitem value="Eliminar" process="@this" icon="fa fa-trash"
+                            styleClass="btn-danger"
+                            rendered="#{cabeceraController.habilitarOperaciones('ELIMINACION')}"
+                            update=":form:panelPrincipal"
+                            action="#{usuarioController.seleccionarUsuario(usuario)}" 
+                            onclick="PF('confirmDialogEliminar').show();"/>
+            </p:menuButton>
+
+
+
+        </p:column>
+    </p:dataTable>
+
+
+</html>

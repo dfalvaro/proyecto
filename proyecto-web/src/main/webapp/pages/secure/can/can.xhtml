@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-7">
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label"  for="txtCodInterno" value="Código Interno" />
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" 
+                                 id="txtCodInterno" 
+                                 value="#{canDM.can.codigoInterno}" 
+                                 required="true"
+                                 readonly="true"
+                                 >
+                    </p:inputText>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" for="txtGuia" value="GUIA:"/>
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:selectOneMenu class="form-control"  value="#{canDM.idGuia}"
+                                     required="true"
+                                     >
+                        <f:selectItem  itemLabel="---Seleccione---" itemValue="#{null}"/>
+                        <f:selectItems id="txtGuia" 
+                                       value="#{canDM.listaGuias}"
+                                       var="espe"
+                                       itemLabel="#{espe.persona.nombres} #{espe.persona.apellidos}"
+                                       itemValue="#{espe.id}" />
+
+
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="CÓDIGO SIIPNE II:"/>
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" 
+                                 value="#{canDM.can.codigoSiipne}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 maxlength="18"
+                                 required="true"
+                                 >
+                        <p:keyFilter mask="num" />
+                    </p:inputText>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="CÓDIGO ESBYE:"/>
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" 
+                                 value="#{canDM.can.codigoEsbye}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 maxlength="7"
+                                 >
+                        <p:keyFilter mask="num" />
+                    </p:inputText>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" for="txtEspecialidad" value="ESPECIALIDAD POR TIPO:"/>
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:selectOneMenu class="form-control"  value="#{canDM.can.especialidadTipo}"
+                                     required="true"
+                                     >
+                        <f:selectItem  itemLabel="---Seleccione---" itemValue="#{null}"/>
+                        <f:selectItems id="txtEspecialidad" 
+                                       value="#{canDM.listaEspecialidad}"
+                                       var="espe"
+                                       itemLabel="#{espe.nombre}"
+                                       itemValue="#{espe.id}" />
+
+                        <p:ajax listener="#{canController.listarEspecialidadSubtipo()}" process="@this" update="txtEspecialidadSubtipo" />
+
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" for="txtEspecialidadSubtipo" value="ESPECIALIDAD POR SUBTIPO:"/>
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:selectOneMenu class="form-control" id="txtEspecialidadSubtipo" 
+                                     value="#{canDM.can.especialidadSubTipo}"
+                                     required="true"
+                                     >
+
+                        <f:selectItem  itemLabel="---Seleccione---" itemValue="#{null}"/>
+                        <f:selectItems 
+                            value="#{canDM.listaEspecialidadSubtipo}"
+                            var="espe"
+                            itemLabel="#{espe.nombre}"
+                            itemValue="#{espe.id}" />
+
+                    </p:selectOneMenu>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="NOMBRE"/>
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" 
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 value="#{canDM.animal.nombres}"
+                                 >
+                    </p:inputText>
+                </div>
+            </div>
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="Nro. CHIPS" for="txtChip"/>
+
+                </div>
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" id="txtChip" value="#{canDM.can.numeroChips}" required="true">
+                    </p:inputText>
+                </div>
+
+            </div>
+
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="NACIONALIDAD:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" 
+                                 value="#{canDM.animal.nacionalidad}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 >
+                    </p:inputText>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="RAZA:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" value="#{canDM.animal.raza}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 >
+                    </p:inputText>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="SEXO:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:selectOneMenu class="form-control" 
+                                     value="#{canDM.animal.sexo}"
+                                     >
+                        <f:selectItem itemLabel="--seleccione--" itemValue="#{null}" />
+                        <f:selectItems >
+                        </f:selectItems>
+                    </p:selectOneMenu>
+                </div>
+
+            </div>
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="FECHA NACIMIENTO:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" value="#{canDM.animal.fechaNacimiento}">
+                    </p:inputText>
+                </div>
+
+            </div>
+
+
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="ESPECIE:"/>
+
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" value="#{canDM.animal.especie}">
+                    </p:inputText>
+                </div>
+
+            </div>
+
+
+            <div class="ui-g-6">
+
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="COLOR:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" value="#{canDM.animal.color}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 >
+                    </p:inputText>
+                </div>
+            </div>
+
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="PELO:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:inputText class="form-control" value="#{canDM.animal.pelo}"
+                                 style="text-transform: uppercase;" 
+                                 converter="UpperCaseConverter"
+                                 >
+                    </p:inputText>
+
+                </div>
+
+            </div>
+
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="ESTADO REPRODUCTIVO:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:selectOneMenu class="form-control" value="#{canDM.animal.estadoReproductivo}">
+
+                    </p:selectOneMenu>
+                </div>
+
+            </div>
+
+
+            <div class="ui-g-6">
+                <div class="ui-g-12" style="padding: 0px">
+                    <p:outputLabel class="form-label" value="ESTADO:"/>
+                </div>
+
+                <div class="ui-g-12" style="padding: 0px" >
+                    <p:selectOneMenu class="form-control" value="#{canDM.animal.estado}">
+                        <f:selectItems id="txtEstado" 
+                                       value="#{canDM.listaEstadoAnimal}"
+                                       var="est"
+                                       itemValue="#{est.tipo}"
+                                       itemLabel="#{est.tipo}"
+                                       />
+                    </p:selectOneMenu>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ui-g-5">
+            <p:outputPanel id="imagenCan" >
+                <div class="ui-g-12" style="padding: 0px">
+                    <div class="ui-s-12 ui-m-12 ui-g-12" >
+                        <div class="ui-g">
+                            <div class="ui-s-12 ui-g-12" align="center">
+                                <b>
+                                    <p:outputLabel value="IMAGEN: " />
+                                </b>
+                            </div>
+                            <div class="ui-s-12  ui-g-12" align="center">
+                                <p:outputPanel style="position: relative; height: 25px;">
+                                    <p:commandLink id="btnSeleccionarImagen"
+                                                   process="@this,subida"
+                                                   update="subida"
+                                                   onclick="PF('dialogSubirDoc').show();"
+                                                   style="width: 100px"
+
+                                                   >
+                                        <p:graphicImage id="imagenProducto"
+                                                        cache="false"
+                                                        stream="false"
+                                                        value="#{canDM.animal.imagenBase64 eq null?canController.mostrarImagenCanBase(canDM.animal.imagen):canController.mostrarImagenTemporal(canDM.animal.imagenBase64)}"
+                                                        style="width: 350px; height: 400px"
+                                                        >
+                                        </p:graphicImage>
+
+
+                                    </p:commandLink>
+
+
+                                </p:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </p:outputPanel>
+        </div>
+
+
+
+
+    </div>
+    <br />
+
+
+    <p:commandButton   styleClass="btn-success"
+                       value="Guardar" 
+                       process="@this,:form:panelPrincipal"
+                       update=":form:panelPrincipal,mensajesCan"
+                       action="#{canController.guardarCan()}" 
+                       />
+    <p:commandButton  value="Cancelar" styleClass="btn-warning"
+                      process="@this"
+                      update=":form:panelPrincipal" action="#{canController.cancelarCan()}">
+        <p:resetInput target=":form:panelPrincipal" />
+    </p:commandButton>
+
+
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtTipoIdentificacion" value="Tipo Identificacion:" />
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneMenu class="form-control" 
+                             id="txtTipoIdentificacion"
+                             value="#{guiaDM.persona.tipoIdentificacion}"
+                             required="true">
+                <f:selectItem itemLabel="Seleccionar"
+                              itemValue="#{null}" 
+                              />
+                <f:selectItems value="#{guiaDM.tipoIdentificacionEnums}"
+                               />
+            </p:selectOneMenu>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtIdentificacion" value="C.I:"/>
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtIdentificacion"
+                         class="form-control" 
+                         value="#{guiaDM.persona.identificacion}"
+                         required="true"
+                         style="text-transform: uppercase;" 
+                         converter="UpperCaseConverter"
+                         >
+            </p:inputText>
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtNombres" value="NOMBRES"/>
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText class="form-control" 
+                         id="txtNombres"
+                         value="#{guiaDM.persona.nombres}"
+                         style="text-transform: uppercase;" 
+                         converter="UpperCaseConverter"
+                         required="true"
+                         >
+            </p:inputText>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" 
+                           for="txtApellidos"
+                           value="APELLIDOS"/>
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText class="form-control" 
+                         id="txtApellidos"
+                         value="#{guiaDM.persona.apellidos}"
+                         style="text-transform: uppercase;" 
+                         converter="UpperCaseConverter"
+                         required="true"
+                         >
+            </p:inputText>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtGrado" value="GRADO:"/>
+        </div>
+
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneMenu class="form-control" value="#{guiaDM.guia.gradoGuiaEnum}"
+                             required="true">
+                <f:selectItems id="txtGrado" 
+                               value="#{guiaDM.gradoGuiaEnum}"
+                               var="grado"
+                               itemLabel="#{grado.tipo}"
+                               itemValue="#{grado.tipo}"
+
+                               />
+            </p:selectOneMenu>
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtEstado" value="ESTADO:"/>
+        </div>
+
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneMenu class="form-control" value="#{guiaDM.guia.estado}"
+                             required="true">
+                <f:selectItems id="txtEstado" 
+                               value="#{guiaDM.estadoRegistroEnums}"
+                               var="est"
+                               itemValue="#{est.tipo}"
+                               itemLabel="#{est.tipo}"
+                               />
+            </p:selectOneMenu>
+        </div>
+
+
+    </div>
+    <br />
+
+
+    <p:commandButton   styleClass="btn-success"
+                       value="Guardar" 
+                       process="@this,:form:panelPrincipal"
+                       update=":form:panelPrincipal"
+                       action="#{guiaController.guardarGuia()}" 
+                       />
+    <p:commandButton  value="Cancelar" styleClass="btn-warning"
+                      process="@this"
+                      update=":form:panelPrincipal" action="#{guiaController.cancelarGuia()}">
+        <p:resetInput target=":form:panelPrincipal" />
+    </p:commandButton>
+
+
+
+</html>

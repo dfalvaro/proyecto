@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <p:tabView id="hiatoriaClinica" >
+        <p:tab  title="Constantes Fisiologicas">
+            <ui:include src="constantesFisiologicas/constantes.xhtml"/>
+        </p:tab>
+        <p:tab title="Exploracion Fisicac y Visual">                            
+            <ui:include src="fisicaVisual/fisico.xhtml"/>
+        </p:tab>
+        <p:tab  title="Evacuaciones">
+            <ui:include src="evacuaciones/evacuaciones.xhtml"/>
+        </p:tab>
+        <p:tab  title="Diagnostico">
+            <ui:include src="diagnostico/diagnostico.xhtml"/>
+        </p:tab>
+        <p:tab  title="Medicacion">
+            <ui:include src="medicacionPrescrita/medicacion.xhtml"/>
+        </p:tab>
+    </p:tabView>
+
+    <p:outputPanel >
+        <p:commandButton   styleClass="btn-success"
+                           value="Guardar" 
+                           process="@this,panelPrincipal"
+                           update=":form:panelPrincipal"
+                           action="#{historiaController.guardarHistoria()}" 
+                           />
+    </p:outputPanel>
+
+
+
+
+</html>

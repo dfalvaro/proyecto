@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="ui-g ui-fluid">
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFecha" value="Fecha" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:calendar id="txtFecha" locale="es" 
+                        navigator="true" 
+                        required="true"
+                        pattern="yyyy-MM-dd" yearRange="c-100:c+100"
+                        value="#{historiaDM.consulta.fecha}"
+                        >
+                <p:ajax event="dateSelect" />
+            </p:calendar>
+        </div>
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtCan" value="Can:" />
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:selectOneMenu class="form-control" 
+                             id="txtCan"
+                             value="#{historiaDM.idCan}"
+                             required="true"
+                             filter="true"
+                             filterMatchMode="contains"
+                             >
+                <f:selectItem itemLabel="Seleccionar"
+                              itemValue="#{null}" 
+                              />
+                <f:selectItems value="#{historiaDM.listaCanes}"
+                               var="can"
+                               itemLabel="#{can.animal.nombres}"
+                               itemValue="#{can.id}"
+                               />
+                <p:ajax listener="#{historiaController.seleccionarCan()}" process="@this" update="txtDatos"/>
+            </p:selectOneMenu>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-6">
+            <p:outputPanel id="txtDatos">
+                <p:outputLabel class="form-label" value="#{historiaDM.canSeleccionado.animal.nombres}" />
+                <p:outputLabel class="form-label" value="#{historiaDM.canSeleccionado.codigoEsbye}" />
+                <p:outputLabel class="form-label" value="#{historiaDM.canSeleccionado.animal.sexo}" />
+
+            </p:outputPanel>
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtMotivo" value="Motivo Consulta:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputTextarea id="txtMotivo"
+                             value="#{historiaDM.consulta.motivoConsulta}"
+                             required="true"
+                             >
+
+
+            </p:inputTextarea>
+
+        </div>
+
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtMotivo" value="Condicion Corporal:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtCondicionCorporal"
+                         value="#{historiaDM.consulta.condicionCorporal}"
+                         required="true"
+                         >
+
+            </p:inputText>
+        </div>
+
+    </div>
+    <br />
+
+
+    <p:commandButton   styleClass="btn-success"
+                       value="Siguiente" 
+                       process="@this,panelTabla"
+                       update=":form:panelPrincipal"
+                       action="#{historiaController.pasarConsulta()}" 
+                       />
+
+
+
+</html>

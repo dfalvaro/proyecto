@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form>
+        <!--         <p:panelMenu   model="{protectedFilter.menuBar}" style="border: none; width: 99%;margin-left: 1px"  >
+                    <f:facet name="options">
+                        <h:panelGrid columns="2">
+        
+                        </h:panelGrid>
+                    </f:facet>
+                </p:panelMenu >-->
+
+
+        <p:panelMenu style="width:100%; background-color: #3c8dbc;color: #ffffff !important;">
+            <p:submenu label="Gestion Canes"
+                       rendered="#{cabeceraController.validarModulos(menu.modGestion)}" 
+                       style="color: #ffffff"
+                       >
+                <p:menuitem value="Ficha Básica"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funCan)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funCan)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Ingresos"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funIngreso)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funIngreso)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Bajas"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funBajas)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funBajas)}"
+                            ajax="false"
+                            />
+
+            </p:submenu>
+
+            <p:submenu label="Gestion Canes"
+                       rendered="#{cabeceraController.validarModulos(menu.modGestion)}" 
+                       style="color: #ffffff"
+                       >
+                <p:menuitem value="Canes"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funCan)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funCan)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Guias"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funGuia)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funGuia)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Veterinarios"  ajax="false"
+                            icon="pi pi-save"/>
+            </p:submenu>
+
+            <p:submenu label="Historia Clinica"
+                       rendered="#{cabeceraController.validarModulos(menu.modFichaMedica)}" 
+                       >
+                <p:menuitem value="Consultas"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funConsulta)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funConsulta)}"
+                            ajax="false"
+                            />
+            </p:submenu>
+
+            <p:submenu label="Examen Tecnico"
+                       rendered="#{cabeceraController.validarModulos(menu.modFichaTecnica)}" 
+                       >
+                <p:menuitem value="Detectores"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funDetectores)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funDetectores)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Rescate"  ajax="false"
+                            icon="pi pi-save"/>
+
+                <p:menuitem value="Seguridad"  ajax="false"
+                            icon="pi pi-save"/>
+
+                <p:menuitem value="Agilidad"  ajax="false"
+                            icon="pi pi-save"/>
+
+                <p:menuitem value="Asistencia"  ajax="false"
+                            icon="pi pi-save"/>
+
+                <p:menuitem value="Forense"  ajax="false"
+                            icon="pi pi-save"/>
+            </p:submenu>
+
+            <p:submenu label="Reportes">
+                <p:menuitem value="Lista de Canes"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funReporteGeneral)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funReporteGeneral)}"
+                            ajax="false"
+                            />
+
+            </p:submenu>
+            <p:submenu label="Seguridad"
+                       rendered="#{cabeceraController.validarModulos(menu.modSeguridad)}" 
+                       >
+                <p:menuitem value="Usuarios"  
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funUsuario)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funUsuario)}"
+                            ajax="false"
+                            />
+                <p:menuitem value="Perfiles"
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funPerfil)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funPerfil)}"
+                            ajax="false"
+                            />
+            </p:submenu>
+
+
+            <p:submenu label="Parametros"
+                       rendered="#{cabeceraController.validarModulos(menu.modParametros)}"
+                       >
+                <p:menuitem value="Generales"  
+                            ajax="false"
+                            rendered="#{cabeceraController.validarFuncionalidad(menu.funParametroGeneral)}"
+                            url="#{cabeceraController.obtenerUrl(menu.funParametroGeneral)}"
+                            />
+            </p:submenu>
+        </p:panelMenu>
+
+
+    </h:form>
+
+
+
+</ui:composition>

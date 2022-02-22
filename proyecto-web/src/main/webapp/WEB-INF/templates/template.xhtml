@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/admin.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="head">
+        <title>Admin Starter</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon.ico']}"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-16x16.png']}" sizes="16x16"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-32x32.png']}" sizes="32x32"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-96x96.png']}" sizes="96x96"/>
+        <link rel="manifest" href="manifest.json"/>
+        <meta name="theme-color" content="#444"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <h:outputStylesheet library="css" name="starter.css"/>
+
+    </ui:define>
+
+<!--    <ui:define name="logo">
+        <h:graphicImage  url ="{resource['images/logo_boehringer.png']}"
+                         style="width:100px;height:40px;" 
+                         />
+    </ui:define>-->
+
+<!--    <ui:define name="logo-mini">
+        <h:graphicImage  url ="{resource['images/logo_boehringer_pequenio.png']}"
+                         style="width:40px;height:40px;margin-bottom: " 
+                         />
+    </ui:define>-->
+
+    <ui:define name="menu">
+
+        <ui:include src="/includes/menu.xhtml"/>
+
+    </ui:define>
+
+    <ui:define name="top-menu">
+     <h:form id="formTopBar">
+         <p:notificationBar position="bottom" effect="slide" styleClass="top" widgetVar="bar" style="text-align: center">
+                <h:outputText value="Posee actividades pendientes de aprobar " style="font-size:35px;color: #000;text-align: center " />
+            </p:notificationBar>
+<!--            <p:remoteCommand actionListener="{cabeceraController.mostarNotificacion()}"
+                             name="initFunction" update="formTopBar" process="@this" />-->
+        </h:form>
+        <script type="text/javascript">
+
+        </script>
+
+
+        <ui:include src="/includes/top-bar.xhtml"/>
+        <ui:include src="/includes/cambiarClave.xhtml"/>
+
+    </ui:define>
+
+    <!-- below is just an example on how to define more tabs for control sidebar --> 
+    <ui:define name="controlsidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ui:define>
+
+
+
+
+    <ui:define name="footer">
+        <a >
+            Copyright (C) 2021
+        </a>
+
+        <div class="pull-right hidden-xs" style="color: gray">
+        </div>
+
+
+    </ui:define>
+
+
+</ui:composition>

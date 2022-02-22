@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <div class="ui-g ui-fluid">
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFechaMed" value="Fecha:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:calendar id="txtFechaMed" locale="es" 
+                        navigator="true" 
+                        required="true"
+                        pattern="yyyy-MM-dd" yearRange="c-100:c+100"
+                        value="#{historiaDM.medicacionPrescrita.fecha}"
+                        >
+                <p:ajax event="dateSelect" />
+            </p:calendar>
+        </div>
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+
+        </div>
+
+        <!--m-->
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtMedicamento" value="Medicamento:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtMedicamento"
+                         value="#{historiaDM.medicacionPrescrita.medicamento}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtDosis" value="Dosis:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtDosis"
+                         value="#{historiaDM.medicacionPrescrita.dosis}"
+                         >
+
+            </p:inputText>
+        </div>  
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtVia" value="Via Administracion:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtVia"
+                         value="#{historiaDM.medicacionPrescrita.via_administracion}"
+                         >
+
+            </p:inputText>
+        </div>   
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtDuracion" value="Duracion Tratamiento:" />
+
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:inputText id="txtDuracion"
+                         value="#{historiaDM.medicacionPrescrita.duracion}"
+                         >
+
+            </p:inputText>
+        </div>  
+
+        <!--m-->
+
+        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+            <p:outputLabel class="form-label" for="txtFechaPrx" value="Fecha:" />
+        </div>
+        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+            <p:calendar id="txtFechaPrx" locale="es" 
+                        navigator="true" 
+                        required="true"
+                        pattern="yyyy-MM-dd" yearRange="c-100:c+100"
+                        value="#{historiaDM.medicacionPrescrita.fechaAlta}"
+                        >
+                <p:ajax event="dateSelect" />
+            </p:calendar>
+        </div>
+
+
+
+    </div>
+    <br />
+
+
+</html>

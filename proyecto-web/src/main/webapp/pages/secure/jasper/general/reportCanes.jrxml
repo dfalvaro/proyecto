@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportCanes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="7" isFloatColumnFooter="true" uuid="b97ddc08-b76c-4075-bd11-a5e211c8f4b4">
+	<property name="ireport.zoom" value="2.3579476910000157"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="proyecto"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" fontName="Arial" fontSize="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18" pdfFontName="Courier-Oblique"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" pattern="" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#F2F1F1"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="usuario" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from gen_can]]>
+	</queryString>
+	<field name="can_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="can_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_codigo_esbye" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_codigo_esbye"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_codigo_siipne" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_codigo_siipne"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_epecialidad_dual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_epecialidad_dual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_epecialidad_subtipo" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="can_epecialidad_subtipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_epecialidad_tipo" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="can_epecialidad_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_numero_chips" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_numero_chips"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="animal" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="animal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="guia" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="guia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<field name="can_ficha_medica" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="can_ficha_medica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gen_can"/>
+	</field>
+	<background>
+		<band height="825" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="801" width="239" height="12" isRemoveLineWhenBlank="true" uuid="ba0dd207-66ff-4ce5-acc9-85d9e25cc189"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Usuario: "+$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Transparent" x="291" y="801" width="66" height="12" isRemoveLineWhenBlank="true" uuid="dec445a6-fcbf-43e8-9da3-3f145be48b9f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="0" y="813" width="357" height="12" isRemoveLineWhenBlank="true" uuid="c157bef0-f1c4-4742-b2a9-8aa6c9f63599"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="357" y="801" width="198" height="12" isRemoveLineWhenBlank="true" uuid="36d44fd8-7c51-4326-aa1d-651ba22b1df5"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="813" width="198" height="12" isRemoveLineWhenBlank="true" uuid="5a364319-e045-4256-9919-cbd5a6bd828a"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="239" y="801" width="52" height="12" isRemoveLineWhenBlank="true" uuid="afa0c41e-5298-4306-931b-4f8beb4d0945"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<rectangle radius="1">
+				<reportElement x="0" y="-2" width="555" height="48" forecolor="#F2F1F1" backcolor="#F2F1F1" uuid="d216b283-1bb0-4c1a-9fda-cb10ba89b884"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="46" width="555" height="1" uuid="f790af5b-76b0-482a-9316-e02298d68a47"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="88" width="82" height="15" uuid="76d01880-2db7-4ec2-9711-fbc3cc737208"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Fecha consulta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="73" width="193" height="15" forecolor="#FFFFFF" backcolor="#990000" uuid="10ee1f53-7eee-4db4-a781-159abefdc738"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Información]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="103" width="82" height="15" uuid="b907699a-e415-438d-8907-cbb8ada1b684"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Descripción:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="73" width="362" height="15" uuid="f3dda369-2c14-413f-8cd8-3983a7b1bb4c"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="555" height="8" uuid="9403b837-cad2-41e5-a961-6d4883dbd6f5"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="17">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="9f1682a3-67ea-485d-a870-937e67bc5edd"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="1" width="185" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="f5a2edc6-de70-412b-9295-5818ed3cb8c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Razón Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="321" y="1" width="54" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="67beebb0-b8cc-47da-b743-0aa196ab6298"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="254" y="1" width="67" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="ee4f6de8-14b8-4292-b14e-f8d16cd89c09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[N° identificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="21" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="9e9d7653-cf86-4c7b-8248-ecda89528e07"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="375" y="1" width="90" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="3494195f-8b7c-4f1b-85a3-3baec1a8f9d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="206" y="1" width="48" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="58e8928b-6d1e-4c46-a1ae-795275a4d519"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Tipo Ident.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="1" width="90" height="16" forecolor="#FFFFFF" backcolor="#990000" uuid="de3b3534-b7c6-46bd-b8b2-88999164d223"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="12" forecolor="#000000" uuid="4aa55cab-2ddd-4196-989e-faf8527fe0af"/>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="104"/>
+	</pageFooter>
+</jasperReport>
